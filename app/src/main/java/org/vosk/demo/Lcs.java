@@ -10,10 +10,16 @@ public class Lcs {
     private int[][] flag =null;
     private List<String> answer,s1,s2;
     private int commonLength;
+    private List<String> sentence_splited;
 
-    Lcs(String a,String b){
+    public List<String> getSentence_splited() {
+        return sentence_splited;
+    }
+
+    Lcs(String a, String b){
         s1 = init(a);
         s2 = init(b);
+        sentence_splited = s1;
         length = Math.max(s1.size(),s2.size())+1;
         dp =new int[length][length];
         flag =new int[length][length];
