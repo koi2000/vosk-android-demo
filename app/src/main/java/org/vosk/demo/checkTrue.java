@@ -4,18 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class checkTrue {
-    private String s1;
     private List<String> standardSentence;
     private List<String> lcs;
     private int removeNumber;
-    private int wordNumber;
 
-    checkTrue(String str, List<String> list1, List<String> list2, int number) {
-        s1 = str;
+    checkTrue(List<String> list1, List<String> list2) {
         standardSentence = list1;
         lcs = list2;
         removeNumber = 0;
-        wordNumber = number;
     }
 
     public List<Boolean> getResult() {
