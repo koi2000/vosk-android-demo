@@ -14,14 +14,23 @@
         android:id="@+id/recognize_mic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/recognize_microphone"/>
+        android:text="@string/startRecord"/>
 
+    <!--
     <ToggleButton
         android:id="@+id/pause"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textOff="@string/pause"
         android:textOn="@string/continueRecognition"/>
+
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score"/>
+    -->
 
     <TextView
         android:id="@+id/result_text"

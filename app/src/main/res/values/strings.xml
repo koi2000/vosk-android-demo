@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SDU Voice Judge</string>
+    <string name="app_name">Voice Judge</string>
     <string name="recognize_file">Recognize File</string>
     <string name="recognize_microphone">Recognize Microphone</string>
     <string name="stop_microphone">Stop Microphone</string>
@@ -14,5 +14,7 @@
     <string name="stop_file">Stop File</string>
     <string name="pause">Pause</string>
     <string name="continueRecognition">Continue</string>
+    <string name="startRecord">StartRecord</string>
+    <string name="score">score</string>
 
 </resources>

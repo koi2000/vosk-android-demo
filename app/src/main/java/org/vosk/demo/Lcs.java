@@ -3,6 +3,7 @@ package org.vosk.demo;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 public class Lcs {
     private int length;
@@ -11,15 +12,21 @@ public class Lcs {
     private List<String> answer,s1,s2;
     private int commonLength;
     private List<String> sentence_splited;
+    private List<String> test_splited;
 
     public List<String> getSentence_splited() {
         return sentence_splited;
+    }
+
+    public List<String> getTest_splited() {
+        return test_splited;
     }
 
     Lcs(String a, String b){
         s1 = init(a);
         s2 = init(b);
         sentence_splited = s1;
+        test_splited = s2;
         length = Math.max(s1.size(),s2.size())+1;
         dp =new int[length][length];
         flag =new int[length][length];
@@ -35,10 +42,7 @@ public class Lcs {
     private List<String> init(String s){
         List<String>lStrings = new ArrayList<>();
         String[] strings =  s.split(" ");
-        for(int i=0;i<strings.length;i++)
-        {
-            lStrings.add(strings[i]);
-        }
+        lStrings.addAll(Arrays.asList(strings));
         return lStrings;
     }
     private int getLcs(){
@@ -85,9 +89,11 @@ public class Lcs {
     public List<String> getAnswerCommonList(){
         return answer;
     }
+
     public int getAnswerCommonLength(){
         return commonLength;
     }
+
     public void run(){
         commonLength = getLcs();
         printLcs(s1.size(), s2.size());
