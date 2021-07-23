@@ -1,36 +1,30 @@
 package org.vosk.demo;
 
+import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 public class Lcs {
     private int length;
     private int[][] dp =null;
     private int[][] flag =null;
     private List<String> answer,s1,s2;
+    private List<Integer>first,second;
     private int commonLength;
-    private List<String> sentence_splited;
-    private List<String> test_splited;
 
-    public List<String> getSentence_splited() {
-        return sentence_splited;
-    }
-
-    public List<String> getTest_splited() {
-        return test_splited;
-    }
-
-    Lcs(String a, String b){
+    Lcs(String a,String b){
         s1 = init(a);
         s2 = init(b);
-        sentence_splited = s1;
-        test_splited = s2;
         length = Math.max(s1.size(),s2.size())+1;
         dp =new int[length][length];
         flag =new int[length][length];
         answer=new ArrayList<>();
+        first=new ArrayList<>();
+        second = new ArrayList<>();
         for(int i=0;i<length;i++)
             for(int j=0;j<length;j++){
                 dp[i][j]=0;
@@ -39,12 +33,17 @@ public class Lcs {
         answer.clear();
         commonLength = 0;
     }
+
     private List<String> init(String s){
         List<String>lStrings = new ArrayList<>();
         String[] strings =  s.split(" ");
-        lStrings.addAll(Arrays.asList(strings));
+        for(int i=0;i<strings.length;i++)
+        {
+            lStrings.add(strings[i]);
+        }
         return lStrings;
     }
+
     private int getLcs(){
 
         List<String>x = s1;
@@ -69,6 +68,7 @@ public class Lcs {
         }
         return dp[x.size()][y.size()];
     }
+
     private void printLcs(int i,int j){
         if(i==0||j==0){
             return;
@@ -76,7 +76,8 @@ public class Lcs {
         if(flag[i][j]==0){
             printLcs(i-1, j-1);
             answer.add(s1.get(i-1));
-
+            first.add(i-1);
+            second.add(j-1);
         }
         else if(flag[i][j]==1){
             printLcs(i-1, j);
@@ -89,13 +90,22 @@ public class Lcs {
     public List<String> getAnswerCommonList(){
         return answer;
     }
-
     public int getAnswerCommonLength(){
         return commonLength;
     }
+    public List<Integer>getAnswerFirstStringIndexs(){
+        return first;
+    }
+    public List<Integer>getAnswerSecondStringIndexs(){
+        return second;
+    }
 
-    public void run(){
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Lcs Build(){
         commonLength = getLcs();
         printLcs(s1.size(), s2.size());
+        first.sort(Comparator.comparingInt(Integer::intValue));
+        second.sort(Comparator.comparingInt(Integer::intValue));
+        return this;
     }
 }
