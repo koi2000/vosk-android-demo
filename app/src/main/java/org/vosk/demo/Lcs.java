@@ -35,8 +35,11 @@ public class Lcs {
     }
 
     private List<String> init(String s){
+        //s = s.replace(",", " , ");
+        //s = s.replace("."," . ");
         List<String>lStrings = new ArrayList<>();
         String[] strings =  s.split(" ");
+
         for(int i=0;i<strings.length;i++)
         {
             lStrings.add(strings[i]);
