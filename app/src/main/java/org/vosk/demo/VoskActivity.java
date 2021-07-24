@@ -523,7 +523,7 @@ public class VoskActivity extends Activity implements RecognitionListener {
         //查看当前读了多少句
         int num = 0;
         for (int i=0;i<lastIndex;i++){
-            if(sentence_splited.get(i).equals(",")){
+            if(sentence_splited.get(i).equals(",")||sentence_splited.get(i).equals(".")){
                 num++;
             }
         }
